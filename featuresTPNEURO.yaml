@@ -1,0 +1,22 @@
+workdir: /tmp
+
+datagrabber:
+  kind: PatternDataGrabber
+  datadir: "/home/noefa/neuro/dataSets/TPneuro/vbm_gm"
+  patterns:
+    VBM_GM: 
+      pattern: '{subject}.nii.gz'
+      space: MNI152NLin2009cAsym
+  replacements: 
+    - subject
+  types:
+    - VBM_GM
+markers:
+  - name: corticalVol_mean
+    kind: ParcelAggregation
+    parcellation: Shen_2013_50 
+    method: mean
+storage: 
+  kind: HDF5FeatureStorage 
+  uri: "/home/noefa/neuro/junifer/features/tp.hdf5"
+
